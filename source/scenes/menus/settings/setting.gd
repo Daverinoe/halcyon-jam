@@ -12,7 +12,7 @@ enum {
 
 # Public vars
 
-var value
+var value setget __set_value, __get_value
 
 # Vars
 var type : int setget __set_type, __get_type
@@ -33,11 +33,11 @@ func _ready(type : int = 0) -> void:
 	
 	match type:
 		0:
-			value = ref.pressed
+			self.value = ref.pressed
 		1:
-			value = ref.get_item_text(ref.selected)
+			self.value = ref.get_item_text(ref.selected)
 		2:
-			value = ref.value
+			self.value = ref.value
 
 
 func __set_type(new_type : int) -> void:
@@ -59,3 +59,12 @@ func add_item(label: String, id: int = -1) -> void:
 
 func _on_CheckBox_toggled(button_pressed: bool) -> void:
 	value = button_pressed
+
+
+func __set_value(new_value) -> void:
+	value = new_value
+	Settings.emit_signal("setting_changed", self.name, self.value)
+
+
+func __get_value():
+	return value

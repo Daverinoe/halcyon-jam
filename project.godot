@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="godot-template"
+config/name="Alarm Cluck"
 run/main_scene="res://source/scenes/main/main.tscn"
 config/icon="res://icon.png"
 
@@ -35,6 +35,11 @@ config/icon="res://icon.png"
 Event="*res://source/helpers/autoloads/event.gd"
 Global="*res://source/helpers/autoloads/global.gd"
 __Screenshot="*res://source/helpers/autoloads/screenshot.gd"
+SettingsManager="*res://source/helpers/autoloads/settings_manager.gd"
+EffectManager="*res://source/helpers/autoloads/effect_manager.gd"
+GraphicManager="*res://source/helpers/autoloads/graphic_manager.gd"
+AudioManager="*res://source/helpers/autoloads/audio_manager.gd"
+InputManager="*res://source/helpers/autoloads/input_manager.gd"
 
 [editor_plugins]
 
