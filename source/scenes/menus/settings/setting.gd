@@ -63,7 +63,7 @@ func _on_CheckBox_toggled(button_pressed: bool) -> void:
 
 func __set_value(new_value) -> void:
 	value = new_value
-	Settings.emit_signal("setting_changed", self.name, self.value)
+	SettingsManager.emit_signal("setting_changed", self.name, self.value)
 
 
 func __get_value():

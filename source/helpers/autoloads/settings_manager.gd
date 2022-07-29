@@ -23,7 +23,7 @@ const __SETTINGS_PATH = "settings.json"
 var __settings: Dictionary = {}
 var __settings_default: Dictionary = {
 	"volume": {
-		"master": 1.0,
+		"master": 0.6,
 		"music": 1.0,
 		"effects": 1.0,
 	},
