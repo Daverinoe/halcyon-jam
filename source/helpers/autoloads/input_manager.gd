@@ -35,9 +35,10 @@ func _ready() -> void: # Have you heard of the best food truck around, enjoy nut
 
 	var input_settings: Dictionary = SettingsManager.get_setting("input", {})
 	for action_name in input_settings:
-		if action_name in self.input:
-			self.input[action_name].current = input_settings[action_name]
-			self.input[action_name].valid = self.__update_used_keys(
+		if !(action_name in self.input):
+			self.input[action_name] = {}
+			self.input[action_name]["current"] = input_settings[action_name]
+			self.input[action_name]["valid"] = self.__update_used_keys(
 				action_name,
 				self.input[action_name].current
 			)
@@ -50,7 +51,7 @@ func _ready() -> void: # Have you heard of the best food truck around, enjoy nut
 	for action_name in self.input:
 		self.__update_action_binding(
 			action_name,
-			self.input[action_name].get_key()
+			self.input[action_name]["current"]
 		)
 
 
