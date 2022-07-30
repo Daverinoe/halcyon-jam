@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/sprites/rooster/walk/rooster_walk2.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/tileset/tileset_beams.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/tileset/tileset_background.png" type="Texture" id=4]
+<<<<<<< Updated upstream
 [ext_resource path="res://assets/sprites/rooster/walk/rooster_walk3.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/rooster/walk/rooster_walk1.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/rooster/walk/rooster_walk4.png" type="Texture" id=7]
@@ -12,6 +13,9 @@
 [ext_resource path="res://assets/sprites/rooster/jump/rooster_jump3.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/rooster/jump/rooster_jump2.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/rooster/jump/rooster_jump1.png" type="Texture" id=12]
+=======
+[ext_resource path="res://assets/sprites/tileset/tileset_roof.png" type="Texture" id=5]
+>>>>>>> Stashed changes
 [ext_resource path="res://source/scenes/test_tileset/torch.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=2]
@@ -118,6 +122,59 @@ resource_local_to_scene = true
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="ConvexPolygonShape2D" id=27]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=28]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=29]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=26]
+0/name = "tileset_roof.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 64 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 2
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 48, Vector2( 1, 0 ), 56, Vector2( 2, 0 ), 24 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 64, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 27 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 27 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 28 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 29 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
 [sub_resource type="TileSet" id=4]
 0/name = "tileset_background.png 0"
 0/texture = ExtResource( 4 )
@@ -211,6 +268,11 @@ tile_set = SubResource( 3 )
 format = 1
 tile_data = PoolIntArray( 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0 )
 
+[node name="Roof" type="TileMap" parent="."]
+tile_set = SubResource( 26 )
+format = 1
+tile_data = PoolIntArray( 65549, 0, 0, 65550, 0, 1, 65551, 0, 2 )
+
 [node name="Stuff" type="TileMap" parent="."]
 tile_set = SubResource( 4 )
 format = 1
@@ -218,11 +280,10 @@ tile_data = PoolIntArray( 65536, 536870914, 0, 65542, 3, 0, 196618, 536870914, 0
 
 [node name="Torch" parent="Stuff" instance=ExtResource( 13 )]
 position = Vector2( 411, 501 )
-frame = 3
+frame = 0
 
 [node name="Torch2" parent="Stuff" instance=ExtResource( 13 )]
 position = Vector2( 703, 500 )
-frame = 1
 
 [node name="Rooster" type="AnimatedSprite" parent="."]
 position = Vector2( 887, 416 )
