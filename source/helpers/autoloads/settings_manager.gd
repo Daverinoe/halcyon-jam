@@ -45,6 +45,7 @@ var __settings_default: Dictionary = {
 		"master": 1.0,
 		"music": 1.0,
 		"effects": 1.0,
+		"ambience": 1.0,
 	},
 	"input": {
 		"move_left": KEY_A,

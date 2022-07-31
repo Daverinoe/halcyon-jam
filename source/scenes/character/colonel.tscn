@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/sprites/rooster/idle/rooster_idle1.png" type="Texture" id=1]
 [ext_resource path="res://source/scenes/character/colonel.gd" type="Script" id=2]
@@ -35,6 +35,8 @@ height = 0.0
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.75, 3.5 )
 
+[sub_resource type="AudioStreamRandomPitch" id=4]
+
 [node name="colonel" type="KinematicBody2D"]
 collision_mask = 3
 script = ExtResource( 2 )
@@ -52,3 +54,8 @@ shape = SubResource( 1 )
 [node name="feet" type="CollisionShape2D" parent="."]
 position = Vector2( -0.75, 28.5 )
 shape = SubResource( 2 )
+
+[node name="chicken" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 4 )
+volume_db = -20.0
+bus = "Effects"

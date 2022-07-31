@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/tilesets/hay.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tilesets/beams.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/tilesets/background.tres" type="TileSet" id=3]
 [ext_resource path="res://assets/sprites/coop/coop.png" type="Texture" id=4]
+[ext_resource path="res://assets/audio/effects/192035__dann93__chickens.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/effects/554170__globofonia__countryside-night.wav" type="AudioStream" id=6]
 
 [node name="level" type="Node2D"]
 
@@ -42,3 +44,19 @@ format = 1
 [node name="Coop" type="Sprite" parent="."]
 position = Vector2( 900, 359 )
 texture = ExtResource( 4 )
+
+[node name="audio" type="Node2D" parent="."]
+
+[node name="chickens" type="AudioStreamPlayer2D" parent="audio"]
+position = Vector2( 886, 376 )
+stream = ExtResource( 5 )
+volume_db = 20.0
+autoplay = true
+max_distance = 400.0
+attenuation = 2.0
+bus = "Ambience"
+
+[node name="night_ambience" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "Night Ambience"
