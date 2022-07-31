@@ -39,7 +39,9 @@ script = ExtResource( 2 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-animation = "idle"
+animation = "walk"
+frame = 3
+speed_scale = 0.5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

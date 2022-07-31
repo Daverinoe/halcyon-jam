@@ -16,17 +16,23 @@ var __acceleration : float = 20.0
 
 var __last_direction : int = -1
 
+onready var sprite = get_node("sprite")
 
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("move_left") and is_on_floor():
 		__direction.x -= 1
 		__last_direction = -1
+		sprite.scale.x = 1
+		sprite.animation = "walk"
 	elif Input.is_action_pressed("move_right") and is_on_floor():
 		__direction.x += 1
 		__last_direction = 1
+		sprite.scale.x = -1
+		sprite.animation = "walk"
 	else:
 		__direction.x = 0
+		sprite.animation = "idle"
 	
 	if is_on_floor():
 		if __direction.x != 0:
