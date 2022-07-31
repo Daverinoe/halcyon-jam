@@ -16,7 +16,6 @@ var __acceleration : float = 20.0
 
 var __last_direction : int = -1
 
-onready var sprite = get_node("sprite")
 
 func _physics_process(delta: float) -> void:
 	
