@@ -230,11 +230,10 @@ tile_data = PoolIntArray( 65536, 536870914, 0, 65542, 3, 0, 196618, 536870914, 0
 
 [node name="Torch" parent="Stuff" instance=ExtResource( 13 )]
 position = Vector2( 411, 501 )
-frame = 3
+frame = 0
 
 [node name="Torch2" parent="Stuff" instance=ExtResource( 13 )]
 position = Vector2( 703, 500 )
-frame = 1
 
 [node name="colonel" parent="." instance=ExtResource( 2 )]
 position = Vector2( 896, 408 )
