@@ -94,6 +94,7 @@ func __update_action_binding(action_name: String, key: int) -> void:
 	event.scancode = key
 
 	InputMap.action_add_event(action_name, event)
+	print("Added %s to action %s!" % [key, action_name])
 
 
 func __input_serialize() -> Dictionary:
