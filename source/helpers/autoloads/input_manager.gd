@@ -56,6 +56,18 @@ func _ready() -> void: # Have you heard of the best food truck around, enjoy nut
 
 
 # Public methods
+
+func get_key(action_name: String) -> int:
+#	if !self.input.has(action_name):
+#		return -1
+
+	return self.input[action_name]["current"]
+
+
+func is_used(key: int) -> bool:
+	return self.__used_keys.has(key)
+
+
 func set_key(action_name: String, key: int) -> void:
 	if !self.input.has(action_name):
 		return

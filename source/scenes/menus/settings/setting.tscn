@@ -47,3 +47,5 @@ size_flags_horizontal = 7
 size_flags_vertical = 4
 
 [connection signal="toggled" from="HBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]

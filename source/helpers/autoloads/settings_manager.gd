@@ -10,20 +10,39 @@ enum COLORBLIND_OPTIONS {
 
 # Public signals
 
-signal setting_changed(name, value)
+signal setting_changed(type, name, value)
 
 
 # Private consts
 
 const __SETTINGS_PATH = "settings.json"
 
+# Public variables
+var resolutions : PoolStringArray = [
+	"1024x768",
+	"1280x800",
+	"1280x720",
+	"1280x1024",
+	"1360x768",
+	"1366x768",
+	"1440x900",
+	"1600x900",
+	"1600x1050",
+	"1920x1200",
+	"1920x1080",
+	"2560x1080",
+	"2560x1600",
+	"2560x1440",
+	"3440x1440",
+	"3840x2160",
+]
 
 # Private variables 
 
 var __settings: Dictionary = {}
 var __settings_default: Dictionary = {
-	"volume": {
-		"master": 0.6,
+	"audio": {
+		"master": 1.0,
 		"music": 1.0,
 		"effects": 1.0,
 	},
@@ -48,6 +67,7 @@ var __settings_default: Dictionary = {
 
 func _ready() -> void: 
 	settings_load()
+	self.connect("setting_changed", self, "change_setting")
 
 
 # Public methods
@@ -140,3 +160,6 @@ func __set_settings(settings: Dictionary, type: String = "") -> void:
 			__set_settings(setting, key)
 		if type:
 			change_setting(type, key, settings[key])
+
+func get_settings() -> Dictionary:
+	return __settings

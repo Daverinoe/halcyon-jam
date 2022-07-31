@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Button",
+"class": "BoardButton",
+"language": "GDScript",
+"path": "res://source/scenes/menus/settings/board_button.gd"
+}, {
+"base": "BoardButton",
+"class": "ChangeButton",
+"language": "GDScript",
+"path": "res://source/scenes/menus/settings/change_button.gd"
+}, {
 "base": "Reference",
 "class": "IOHelper",
 "language": "GDScript",
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://source/scenes/menus/settings/setting.gd"
 } ]
 _global_script_class_icons={
+"BoardButton": "",
+"ChangeButton": "",
 "IOHelper": "",
 "Setting": ""
 }
@@ -27,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Alarm Cluck"
-run/main_scene="res://source/scenes/main/main.tscn"
+run/main_scene="res://source/scenes/menus/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -36,6 +48,7 @@ Event="*res://source/helpers/autoloads/event.gd"
 Global="*res://source/helpers/autoloads/global.gd"
 __Screenshot="*res://source/helpers/autoloads/screenshot.gd"
 SettingsManager="*res://source/helpers/autoloads/settings_manager.gd"
+SceneManager="*res://source/helpers/autoloads/scene_manager.gd"
 EffectManager="*res://source/helpers/autoloads/effect_manager.gd"
 GraphicManager="*res://source/helpers/autoloads/graphic_manager.gd"
 AudioManager="*res://source/helpers/autoloads/audio_manager.gd"
@@ -43,6 +56,7 @@ InputManager="*res://source/helpers/autoloads/input_manager.gd"
 
 [display]
 
+window/size/height=768
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
