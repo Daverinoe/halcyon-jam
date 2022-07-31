@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		__jump = 0
 	
 	var v = __velocity
-	__velocity = move_and_slide(__velocity, Vector2.UP, false, 4, 0, false)
+	__velocity = move_and_slide(__velocity, Vector2.UP, false, 4, PI/4, false)
 	
 	__collide_with_walls(v)
 

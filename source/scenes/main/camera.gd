@@ -1,52 +1,36 @@
 extends Node2D
 
+
+export(NodePath) var colonel_path
+var colonel
+
+
 var __resolution : Vector2 = Vector2(1024, 768)
 
-var __can_transition_right : bool = true
-var __can_transition_left : bool = true
-var __can_transition_up : bool = true
-var __can_transition_down : bool = true
+var __left_bound : float
+var __right_bound : float
+var __top_bound : float
+var __bottom_bound : float
 
-# Called when the node enters the scene tree for the first time.
+var __chicken_pos : Vector2
+
 func _ready() -> void:
-	pass # Replace with function body.
+	 colonel = get_node(colonel_path)
 
+func _physics_process(delta: float) -> void:
+	__chicken_pos = colonel.get_global_transform().get_origin()
+	var pos = self.get_global_transform().get_origin()
+	
+	__left_bound = pos.x - __resolution.x/2
+	__right_bound  = pos.x + __resolution.x/2
+	__top_bound  = pos.y - __resolution.y/2
+	__bottom_bound  = pos.y + __resolution.y/2
 
-func _on_left_bound_body_entered(body: Node) -> void:
-	if __can_transition_left:
+	if __chicken_pos.x < __left_bound:
 		self.position.x -= __resolution.x
-		__can_transition_right = false
-
-
-func _on_right_bound_body_entered(body: Node) -> void:
-	if __can_transition_right:
+	if __chicken_pos.x > __right_bound:
 		self.position.x += __resolution.x
-		__can_transition_left = false
-
-
-func _on_top_bound_body_entered(body: Node) -> void:
-	if __can_transition_up:
+	if __chicken_pos.y < __top_bound:
 		self.position.y -= __resolution.y
-		__can_transition_down = false
-
-
-func _on_bottom_bound_body_entered(body: Node) -> void:
-	if __can_transition_down:
+	if __chicken_pos.y > __bottom_bound:
 		self.position.y += __resolution.y
-		__can_transition_up = false
-
-
-func _on_left_bound_body_exited(body: Node) -> void:
-	__can_transition_left = true
-
-
-func _on_right_bound_body_exited(body: Node) -> void:
-	__can_transition_right = true
-
-
-func _on_top_bound_body_exited(body: Node) -> void:
-	__can_transition_up = true
-
-
-func _on_bottom_bound_body_exited(body: Node) -> void:
-	__can_transition_down = true
