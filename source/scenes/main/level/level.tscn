@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/tilesets/hay.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tilesets/beams.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/tilesets/background.tres" type="TileSet" id=3]
+[ext_resource path="res://assets/sprites/coop/coop.png" type="Texture" id=4]
 
 [node name="level" type="Node2D"]
 
@@ -27,3 +28,7 @@ tile_data = PoolIntArray( 524312, 0, 131072, 524313, 0, 131074, 524314, 0, 13107
 [node name="decals" type="TileMap" parent="."]
 position = Vector2( -1689, 29 )
 format = 1
+
+[node name="Coop" type="Sprite" parent="."]
+position = Vector2( 900, 359 )
+texture = ExtResource( 4 )
