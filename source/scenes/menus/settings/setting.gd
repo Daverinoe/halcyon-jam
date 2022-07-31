@@ -53,10 +53,15 @@ func _ready() -> void:
 			self.set_range([0, 1.0], 0.05)
 	match __name_string:
 		"screen_resolution":
+			if OS.has_feature("JavaScript"):
+				self.queue_free()
 			for resolution in SettingsManager.resolutions:
 				ref = ref as OptionButton
 				ref.add_item(resolution)
-				self.__set_value("1920x1080")
+			self.__set_value("1920x1080")
+		"fullscreen":
+			if OS.has_feature("JavaScript"):
+				self.queue_free()
 
 
 func __set_type(new_type : int) -> void:

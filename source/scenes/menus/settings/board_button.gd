@@ -19,12 +19,10 @@ var __mouse: bool = false
 var __timer: Timer = Timer.new()
 
 
-# Lifecycle methods
-
 func _ready() -> void:
-	add_child(__timer)
 	__timer.wait_time = 0.2
 	__timer.connect("timeout", self, "__toggle_text")
+	self.add_child(__timer)
 
 	if animating:
 		__timer.start()
