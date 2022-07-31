@@ -46,4 +46,15 @@ margin_bottom = 308.0
 size_flags_horizontal = 7
 size_flags_vertical = 4
 
+[node name="Button" type="Button" parent="HBoxContainer"]
+visible = false
+margin_left = 588.0
+margin_right = 600.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+text = "set"
+
 [connection signal="toggled" from="HBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_Button_pressed"]

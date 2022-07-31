@@ -22,7 +22,7 @@ const __SETTINGS_PATH = "settings.json"
 
 var __settings: Dictionary = {}
 var __settings_default: Dictionary = {
-	"volume": {
+	"audio": {
 		"master": 1.0,
 		"music": 1.0,
 		"effects": 1.0,
@@ -140,3 +140,6 @@ func __set_settings(settings: Dictionary, type: String = "") -> void:
 			__set_settings(setting, key)
 		if type:
 			change_setting(type, key, settings[key])
+
+func get_settings() -> Dictionary:
+	return __settings
