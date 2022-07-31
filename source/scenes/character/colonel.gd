@@ -39,6 +39,9 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_pressed("jump") and is_on_floor():
 		__jump = lerp(__jump, __max_jump, 5 * delta)
+		$sprite.scale.y = clamp(1.0 - __jump / __max_jump, 0.5, 1.0)
+		$sprite.scale.x = clamp(1.0 + __jump / __max_jump, 1.0, 1.7)
+		$sprite.position.y = clamp($sprite.position.y + 2, 0, 16)
 		__velocity.x = 0
 	
 	# Handle y velocity
@@ -48,6 +51,9 @@ func _physics_process(delta: float) -> void:
 	and is_on_floor() and __jump >= __min_jump):
 		__velocity.y = -__jump
 		__velocity.x = __last_direction * __jump_horizontal_velocity # Set x-velocity for jump
+		$sprite.scale.y = 1.0
+		$sprite.scale.x = 1.0
+		$sprite.position.y = 0
 		__jump = 0
 	
 	var v = __velocity
