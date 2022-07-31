@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "BoardButton",
+"language": "GDScript",
+"path": "res://source/scenes/menus/settings/board_button.gd"
+}, {
+"base": "BoardButton",
+"class": "ChangeButton",
+"language": "GDScript",
+"path": "res://source/scenes/menus/settings/change_button.gd"
+}, {
+"base": "Reference",
 "class": "IOHelper",
 "language": "GDScript",
 "path": "res://source/helpers/common/io_helper.gd"
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://source/scenes/menus/settings/setting.gd"
 } ]
 _global_script_class_icons={
+"BoardButton": "",
+"ChangeButton": "",
 "IOHelper": "",
 "Setting": ""
 }
@@ -41,6 +53,11 @@ GraphicManager="*res://source/helpers/autoloads/graphic_manager.gd"
 AudioManager="*res://source/helpers/autoloads/audio_manager.gd"
 InputManager="*res://source/helpers/autoloads/input_manager.gd"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [editor_plugins]
 
 enabled=PoolStringArray(  )
@@ -48,6 +65,24 @@ enabled=PoolStringArray(  )
 [gui]
 
 theme/custom="res://assets/themes/main.theme"
+
+[input]
+
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 

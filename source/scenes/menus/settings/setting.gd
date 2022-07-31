@@ -17,27 +17,46 @@ var setting_value setget __set_value, __get_value
 
 # Vars
 export(int, "Check Box", "Option Button", "Slider", "Key Input") var type : int setget __set_type, __get_type
+var __type_string : String
+var __name_string : String
 
 # Onreadies
 onready var __references :  = [
 	$HBoxContainer/CheckBox,
 	$HBoxContainer/OptionButton,
 	$HBoxContainer/HSlider,
-	$HBoxContainer/Button,
 ]
 
 
 func _ready() -> void:
+	
 	var text_parse = name.split("-")
-	$HBoxContainer/Label.text = text_parse[1]
+	__type_string = text_parse[0]
+	__name_string = text_parse[1]
+	$HBoxContainer/Label.text = __name_string
 	self.type = type
+	
+	
+	if type == self.KEY_INPUT:
+		var key_button : ChangeButton = ChangeButton.new()
+		key_button.binding = __name_string
+		key_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		__references.push_back(key_button)
+		$HBoxContainer.add_child(key_button)
+	
 	var ref = __references[type]
 	ref.visible = true
 	
-	self.setting_value = SettingsManager.get_setting(text_parse[0] + "/" + text_parse[1])
+	self.setting_value = SettingsManager.get_setting(__type_string + "/" + __name_string)
 	match type:
 		SLIDER:
 			self.set_range([0, 1.0], 0.05)
+	match __name_string:
+		"screen_resolution":
+			for resolution in SettingsManager.resolutions:
+				ref = ref as OptionButton
+				ref.add_item(resolution)
+				self.__set_value("1920x1080")
 
 
 func __set_type(new_type : int) -> void:
@@ -59,7 +78,7 @@ func add_item(label: String, id: int = -1) -> void:
 
 
 func _on_CheckBox_toggled(button_pressed: bool) -> void:
-	setting_value = button_pressed
+	__set_value(button_pressed)
 
 
 func __set_value(new_value) -> void:
@@ -69,13 +88,13 @@ func __set_value(new_value) -> void:
 		KEY_INPUT:
 			__references[type].text = OS.get_scancode_string(setting_value)
 		OPTION_BUTTON:
-			__references[type].text = setting_value
+			(__references[type] as OptionButton).select(SettingsManager.resolutions.find(setting_value))
 		CHECK_BOX:
 			__references[type].pressed = setting_value
 		SLIDER:
 			__references[type].value = setting_value
 		
-	SettingsManager.emit_signal("setting_changed", self.name, self.setting_value)
+	SettingsManager.change_setting(self.__type_string, self.__name_string, self.setting_value)
 
 
 func __get_value():
@@ -83,12 +102,11 @@ func __get_value():
 
 
 func _on_HSlider_value_changed(value: float) -> void:
-	setting_value = value
+	__set_value(value)
 
 
 func _on_OptionButton_item_selected(index: int) -> void:
-	pass # Replace with function body.
+	var ref = (__references[type] as OptionButton)
+	var value = ref.get_item_text(ref.get_selected_id())
+	__set_value(value)
 
-
-func _on_Button_pressed() -> void:
-	pass # Replace with function body.
