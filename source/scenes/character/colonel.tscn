@@ -36,6 +36,7 @@ height = 0.0
 extents = Vector2( 6.75, 3.5 )
 
 [node name="colonel" type="KinematicBody2D"]
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
