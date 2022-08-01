@@ -94,6 +94,7 @@ func set_setting(name: String, value, save: bool = false) -> void:
 	for key in __settings:
 		if __settings[key].has(name):
 			self.change_setting(key, name, value)
+			__settings[key][name] = value
 
 
 func change_setting(type: String, name: String, value, save: bool = false) -> void: 
@@ -110,6 +111,7 @@ func change_setting(type: String, name: String, value, save: bool = false) -> vo
 			pass
 	
 	__settings[type][name] = value
+	settings_save()
 
 
 func settings_load() -> void: 
@@ -132,7 +134,7 @@ func settings_load() -> void:
 func settings_save() -> void: 
 	var setting_string: String = to_json(__settings)
 		
-	IOHelper.file_save(__SETTINGS_PATH, setting_string)
+	IOHelper.file_save(setting_string, __SETTINGS_PATH)
 
 
 # Private methods 
