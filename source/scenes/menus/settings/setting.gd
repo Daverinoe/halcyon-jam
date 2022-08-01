@@ -62,11 +62,11 @@ func _ready() -> void:
 		"fullscreen":
 			if OS.has_feature("JavaScript"):
 				self.queue_free()
-#		"colorblind":
-#			for index in SettingsManager.COLORBLIND_OPTIONS:
-#				ref = ref as OptionButton
-#				var name = SettingsManager.COLORBLIND_OPTIONS.keys()[index]
-#				ref.add_item(name)
+		"colorblind":
+			for index in SettingsManager.COLORBLIND_OPTIONS:
+				ref = ref as OptionButton
+				var name = SettingsManager.COLORBLIND_OPTIONS.keys()[index]
+				ref.add_item(name)
 
 
 func __set_type(new_type : int) -> void:

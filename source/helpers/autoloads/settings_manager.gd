@@ -42,9 +42,10 @@ var resolutions : PoolStringArray = [
 var __settings: Dictionary = {}
 var __settings_default: Dictionary = {
 	"audio": {
-		"master": 1.0,
-		"music": 1.0,
-		"effects": 1.0,
+		"master": 0.8,
+		"music": 0.7,
+		"effects": 0.8,
+		"ambience": 0.8,
 	},
 	"input": {
 		"move_left": KEY_A,
@@ -56,7 +57,7 @@ var __settings_default: Dictionary = {
 		"screen_resolution": "1920x1080",
 		"fullscreen": false,
 		"colorblind": COLORBLIND_OPTIONS.NONE,
-		"colorblind_intensity": 1,
+		"colorblind_intensity": 1.0,
 	},
 	"gameplay": {
 	},
@@ -94,12 +95,11 @@ func set_setting(name: String, value, save: bool = false) -> void:
 	for key in __settings:
 		if __settings[key].has(name):
 			self.change_setting(key, name, value)
-			__settings[key][name] = value
 
 
 func change_setting(type: String, name: String, value, save: bool = false) -> void: 
 	match type:
-		"volume":
+		"audio":
 			AudioManager.set_volume(name, value)
 		"graphics":
 			GraphicManager.set_graphic(name, value)
@@ -111,7 +111,6 @@ func change_setting(type: String, name: String, value, save: bool = false) -> vo
 			pass
 	
 	__settings[type][name] = value
-	settings_save()
 
 
 func settings_load() -> void: 
@@ -134,7 +133,7 @@ func settings_load() -> void:
 func settings_save() -> void: 
 	var setting_string: String = to_json(__settings)
 		
-	IOHelper.file_save(setting_string, __SETTINGS_PATH)
+	IOHelper.file_save(__SETTINGS_PATH, setting_string)
 
 
 # Private methods 

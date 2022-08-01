@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://source/scenes/menus/settings/setting.gd" type="Script" id=1]
+[ext_resource path="res://assets/themes/settings.tres" type="Theme" id=2]
 
 [node name="setting" type="Control"]
 anchor_right = 0.586
@@ -15,10 +16,11 @@ anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 margin_left = 195.0
-margin_top = 16.0
+margin_top = 24.0
 margin_right = 405.0
-margin_bottom = 43.0
+margin_bottom = 51.0
 size_flags_horizontal = 6
+theme = ExtResource( 2 )
 text = "Setting Name"
 
 [node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
@@ -27,6 +29,7 @@ margin_left = 439.0
 margin_right = 463.0
 margin_bottom = 60.0
 size_flags_horizontal = 6
+theme = ExtResource( 2 )
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
 visible = false
@@ -36,6 +39,7 @@ margin_right = 465.0
 margin_bottom = 46.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = ExtResource( 2 )
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer"]
 visible = false
@@ -45,6 +49,7 @@ margin_right = 1024.0
 margin_bottom = 308.0
 size_flags_horizontal = 7
 size_flags_vertical = 4
+theme = ExtResource( 2 )
 
 [connection signal="toggled" from="HBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]

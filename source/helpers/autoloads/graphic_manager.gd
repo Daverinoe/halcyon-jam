@@ -1,5 +1,8 @@
 extends Node
 
+signal set_ss_shader
+
+
 func set_graphic(name: String, value) -> void:
 	match name:
 		"screen_resolution":
@@ -25,8 +28,8 @@ func __set_fullscreen(value: bool) -> void:
 
 
 func __set_colorblind(value: int) -> void:
-	pass
+	emit_signal("set_ss_shader")
 
 
 func __set_colorblind_intensity(value: float) -> void:
-	pass
+	emit_signal("set_ss_shader")

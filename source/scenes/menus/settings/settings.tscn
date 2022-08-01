@@ -193,6 +193,26 @@ margin_right = 634.0
 margin_bottom = 195.0
 size_flags_horizontal = 3
 
+[node name="graphics-colorblind" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/graphics" instance=ExtResource( 2 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 199.0
+margin_right = 634.0
+margin_bottom = 259.0
+size_flags_horizontal = 3
+type = 1
+
+[node name="graphics-colorblind_intensity" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3/graphics" instance=ExtResource( 2 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 199.0
+margin_right = 634.0
+margin_bottom = 259.0
+size_flags_horizontal = 3
+type = 2
+
 [node name="back" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 margin_top = 424.0
 margin_right = 676.0

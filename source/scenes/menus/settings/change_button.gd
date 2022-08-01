@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 			self.__update_text(incoming)
 			return
 
-		SettingsManager.change_setting("input", self.binding, incoming)
+		InputManager.set_key(self.binding, incoming)
 
 		self.__current = incoming
 		self.__listening = false
