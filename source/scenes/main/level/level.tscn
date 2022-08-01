@@ -247,7 +247,7 @@ bus = "Night Ambience"
 
 [node name="music" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource( 16 )
-volume_db = -50.0
+volume_db = -45.0
 autoplay = true
 bus = "Music"
 
