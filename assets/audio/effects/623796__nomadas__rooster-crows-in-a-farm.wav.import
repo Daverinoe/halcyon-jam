@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/623796__nomadas__rooster-crows-in-a-farm.wav-ee1f9e71c48c2cc6470a4e80d4665faa.sample"
+
+[deps]
+
+source_file="res://assets/audio/effects/623796__nomadas__rooster-crows-in-a-farm.wav"
+dest_files=[ "res://.import/623796__nomadas__rooster-crows-in-a-farm.wav-ee1f9e71c48c2cc6470a4e80d4665faa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

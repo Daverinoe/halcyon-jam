@@ -33,7 +33,7 @@ func _ready() -> void:
 	var text_parse = name.split("-")
 	__type_string = text_parse[0]
 	__name_string = text_parse[1]
-	$HBoxContainer/Label.text = __name_string
+	$HBoxContainer/Label.text = __name_string.replace("_", " ")
 	self.type = type
 	
 	
@@ -62,6 +62,11 @@ func _ready() -> void:
 		"fullscreen":
 			if OS.has_feature("JavaScript"):
 				self.queue_free()
+		"colorblind":
+			for index in SettingsManager.COLORBLIND_OPTIONS:
+				ref = ref as OptionButton
+				var name = SettingsManager.COLORBLIND_OPTIONS.keys()[index]
+				ref.add_item(name)
 
 
 func __set_type(new_type : int) -> void:

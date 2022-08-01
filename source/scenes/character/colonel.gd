@@ -18,57 +18,61 @@ var __last_direction : int = -1
 var __foosteps_playing : bool = false
 
 func _physics_process(delta: float) -> void:
-	
-	if Input.is_action_pressed("move_left") and is_on_floor():
-		__set_direction(-1)
-	elif Input.is_action_pressed("move_right") and is_on_floor():
-		__set_direction(1)
-	else:
-		__direction.x = 0
-		$sprite.animation = "idle"
-	
-	# Handle x velocity
-	if is_on_floor():
-		if __direction.x != 0:
-			__velocity.x = lerp(__velocity.x, __direction.x * __speed, __acceleration * delta)
+	if Global.can_control:
+		
+		if Input.is_action_pressed("move_left") and is_on_floor():
+			__set_direction(-1)
+		elif Input.is_action_pressed("move_right") and is_on_floor():
+			__set_direction(1)
 		else:
-			__velocity.x = lerp(__velocity.x, 0, __friction * delta)
-	
-	__velocity.x = clamp(__velocity.x, -__max_speed, __max_speed)
+			__direction.x = 0
+			$sprite.animation = "idle"
+		
+		# Handle x velocity
+		if is_on_floor():
+			if __direction.x != 0:
+				__velocity.x = lerp(__velocity.x, __direction.x * __speed, __acceleration * delta)
+			else:
+				__velocity.x = lerp(__velocity.x, 0, __friction * delta)
+		
+		__velocity.x = clamp(__velocity.x, -__max_speed, __max_speed)
 
 
-	if Input.is_action_pressed("jump") and is_on_floor():
-		__play_audio("")
-		__jump = lerp(__jump, __max_jump, 5 * delta)
-		$sprite.scale.y = clamp(1.0 - __jump / __max_jump, 0.5, 1.0)
-		$sprite.scale.x = clamp(1.0 + __jump / __max_jump, 1.0, 1.7)
-		$sprite.position.y = clamp($sprite.position.y + 2, 0, 16)
-		__velocity.x = 0
-	
-	# Handle y velocity
-	__velocity.y += __gravity
-	
-	if (Input.is_action_just_released("jump") 
-	and is_on_floor() and __jump >= __min_jump):
-		__play_audio("jump")
-		__velocity.y = -__jump
-		__velocity.x = __last_direction * __jump_horizontal_velocity # Set x-velocity for jump
-		$sprite.scale.y = 1.0
-		$sprite.scale.x = 1.0
-		$sprite.position.y = 0
-		__jump = 0
-	
-	var v = __velocity
-	__velocity = move_and_slide(__velocity, Vector2.UP, false, 4, PI/4, false)
-	
-	__collide_with_walls(v)
-	
-	if abs(__velocity.x) > 0.5 and !__foosteps_playing and is_on_floor():
-		__foosteps_playing = true
-		__play_audio("footsteps")
-	elif abs(__velocity.x) < 0.1 and __foosteps_playing:
-		__foosteps_playing = false
-		__play_audio("")
+		if Input.is_action_pressed("jump") and is_on_floor():
+			__play_audio("")
+			__jump = lerp(__jump, __max_jump, 5 * delta)
+			$sprite.scale.y = clamp(1.0 - __jump / __max_jump, 0.5, 1.0)
+			$sprite.scale.x = clamp(1.0 + __jump / __max_jump, 1.0, 1.7)
+			$sprite.position.y = clamp($sprite.position.y + 2, 0, 16)
+			__velocity.x = 0
+		
+		# Handle y velocity
+		__velocity.y += __gravity
+		
+		if (Input.is_action_just_released("jump") 
+		and is_on_floor() and __jump >= __min_jump):
+			__play_audio("jump")
+			__velocity.y = -__jump
+			__velocity.x = __last_direction * __jump_horizontal_velocity # Set x-velocity for jump
+			$sprite.scale.y = 1.0
+			$sprite.scale.x = 1.0
+			$sprite.position.y = 0
+			__jump = 0
+		
+		if __velocity.y >= 1000 and !is_on_floor():
+			__velocity.y = 1000
+		
+		var v = __velocity
+		__velocity = move_and_slide(__velocity, Vector2.UP, false, 4, PI/4, false)
+		
+		__collide_with_walls(v)
+		
+		if abs(__velocity.x) > 0.5 and !__foosteps_playing and is_on_floor():
+			__foosteps_playing = true
+			__play_audio("footsteps")
+		elif abs(__velocity.x) < 0.1 and __foosteps_playing:
+			__foosteps_playing = false
+			__play_audio("")
 
 
 func __collide_with_walls(before_collision_velocity) -> void:

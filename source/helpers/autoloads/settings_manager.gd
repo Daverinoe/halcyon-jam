@@ -42,10 +42,10 @@ var resolutions : PoolStringArray = [
 var __settings: Dictionary = {}
 var __settings_default: Dictionary = {
 	"audio": {
-		"master": 1.0,
-		"music": 1.0,
-		"effects": 1.0,
-		"ambience": 1.0,
+		"master": 0.8,
+		"music": 0.7,
+		"effects": 0.8,
+		"ambience": 0.8,
 	},
 	"input": {
 		"move_left": KEY_A,
@@ -57,7 +57,7 @@ var __settings_default: Dictionary = {
 		"screen_resolution": "1920x1080",
 		"fullscreen": false,
 		"colorblind": COLORBLIND_OPTIONS.NONE,
-		"colorblind_intensity": 1,
+		"colorblind_intensity": 1.0,
 	},
 	"gameplay": {
 	},
@@ -99,7 +99,7 @@ func set_setting(name: String, value, save: bool = false) -> void:
 
 func change_setting(type: String, name: String, value, save: bool = false) -> void: 
 	match type:
-		"volume":
+		"audio":
 			AudioManager.set_volume(name, value)
 		"graphics":
 			GraphicManager.set_graphic(name, value)

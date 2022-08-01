@@ -2,8 +2,7 @@
 
 [sub_resource type="AudioEffectLowPassFilter" id=1]
 resource_name = "LowPassFilter"
-cutoff_hz = 1000.0
-db = 3
+cutoff_hz = 750.0
 
 [resource]
 bus/1/name = "Music"
@@ -28,7 +27,7 @@ bus/4/name = "Night Ambience"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -9.06927
+bus/4/volume_db = -14.6228
 bus/4/send = "Ambience"
 bus/4/effect/0/effect = SubResource( 1 )
 bus/4/effect/0/enabled = true
